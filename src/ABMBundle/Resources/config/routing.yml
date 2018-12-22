@@ -1,4 +1,4 @@
 abm_persona:
     resource: "@ABMBundle/Resources/config/routing/persona.yml"
-    prefix:   /persona
+    prefix:   /
 
