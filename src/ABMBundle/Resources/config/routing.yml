@@ -2,6 +2,3 @@ abm_persona:
     resource: "@ABMBundle/Resources/config/routing/persona.yml"
     prefix:   /persona
 
-abm_homepage:
-    path:     /
-    defaults: { _controller: ABMBundle:Default:index }
