@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+
+<br />
+<div>
+<img  src="{{ asset('public/interaxa.png') }}"  style="position: relative; left: 35%;"/>
+</div>
+
+<br /><br />
+
+<div class="container-fluid">
+    <table class="table table-dark" >
+        <thead >
+            <tr>
+                <th>Id</th>
+                <th>Nro. legajo</th>
+                <th>Nombre</th>
+                <th>Fecha nacimiento</th>
+                <th>Edad</th>
+                <th>Tipodoc</th>
+                <th>Nro. doc</th>
+                <th>Cuil</th>
+                <th>Nro. celular</th>
+                <th>Mail</th>             
+            </tr>
+        </thead>
+        <tbody>
+        {% for persona in personas %}
+            <tr>
+                <td><a href="{{ path('persona_show', { 'id': persona.id }) }}">{{ persona.id }}</a></td>
+                <td>{{ persona.nroLegajo }}</td>
+                <td>{{ persona.nombre }}</td>
+                <td>{% if persona.fechaNacimiento %}{{ persona.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ persona.edad }}</td>
+                <td>{{ persona.tipoDoc }}</td>
+                <td>{{ persona.nroDoc }}</td>
+                <td>{{ persona.cuil }}</td>
+                <td>{{ persona.numCelular }}</td>
+                <td>{{ persona.mail }}</td>
+                <td>
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <a href="{{ path('persona_show', { 'id': persona.id }) }}">show</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="{{ path('persona_edit', { 'id': persona.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+    <ul>
+        <li style="list-style:none;">
+            <a href="{{ path('persona_new') }}">Crear una nueva persona</a>
+        </li>
+    </ul>
+    
+{% endblock %}

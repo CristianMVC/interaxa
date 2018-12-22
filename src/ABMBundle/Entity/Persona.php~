@@ -1,0 +1,92 @@
+<?php
+
+namespace ABMBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\OneToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
+use ABMBundle\Entity\Prepaga;
+use ABMBundle\Entity\Puesto;
+
+/**
+ * Persona
+ */
+class Persona
+{
+    /**
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @var int
+     */
+    private $nroLegajo;
+
+    /**
+     * @var string
+     */
+    private $nombre;
+
+    /**
+     * @var \DateTime
+     */
+    private $fechaNacimiento;
+
+    /**
+     * @var int
+     */
+    private $edad;
+
+    /**
+     * @var string
+     */
+    private $tipoDoc;
+
+    /**
+     * @var string
+     */
+    private $nroDoc;
+
+    /**
+     * @var string
+     */
+    private $cuil;
+
+
+    /**
+     * @ORM\OneToOne(targetEntity="Prepaga")
+     * @JoinColumn(name="id_prepaga", referencedColumnName="Codigo")
+     */
+    private $prepaga;
+
+   /**
+     * @ORM\OneToOne(targetEntity="Puesto")
+     * @JoinColumn(name="id_puesto", referencedColumnName="id")
+     */  
+    private $puesto;
+
+    /**
+     * @var int
+     */
+    private $numCelular;
+
+    /**
+     * @var string
+     */
+    private $mail;
+
+    /**
+     * @var \DateTime
+     */
+    private $fechaIngreso;
+
+    /**
+     * @var \DateTime
+     */
+    private $fechaFin;
+
+
+ 
+
+
+}

@@ -1,0 +1,21 @@
+ABMBundle\Entity\Prepaga:
+    type: entity
+    table: prepaga
+    id:
+        codigo:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        descripcion:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: Descripcion
+    lifecycleCallbacks: {  }

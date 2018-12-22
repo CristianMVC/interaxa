@@ -1,0 +1,108 @@
+ABMBundle\Entity\Persona:
+    type: entity
+    table: persona
+    uniqueConstraints:
+        UNIQ_51E5B69BE2E5392A:
+            columns:
+                - Nro_legajo
+        UNIQ_51E5B69B3EBEA68E:
+            columns:
+                - Nro_doc
+        UNIQ_51E5B69BAE47FE9:
+            columns:
+                - Cuil
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nroLegajo:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: Nro_legajo
+        nombre:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: Nombre
+        fechaNacimiento:
+            type: date
+            nullable: false
+            column: Fecha_nacimiento
+        edad:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: Edad
+        tipoDoc:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: Tipo_doc
+        nroDoc:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: Nro_doc
+        cuil:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: Cuil
+        numCelular:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: Num_celular
+        mail:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: Mail
+        fechaIngreso:
+            type: date
+            nullable: false
+            column: Fecha_ingreso
+        fechaFin:
+            type: date
+            nullable: false
+            column: Fecha_fin
+    oneToOne:
+        prepaga:
+            targetEntity: Prepaga
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                prepaga_id:
+                    referencedColumnName: codigo
+            orphanRemoval: false
+        puesto:
+            targetEntity: Puesto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                puesto_id:
+                    referencedColumnName: codigo
+            orphanRemoval: false            
+    lifecycleCallbacks: {  }

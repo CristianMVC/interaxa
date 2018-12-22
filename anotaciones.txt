@@ -1,0 +1,15 @@
+1) generar mappeo:
+
+php bin/console doctrine:mapping:import ABMBundle yml
+
+
+2)configurar parametros BD.
+
+3) generar base de datos:
+ 
+php app/console doctrine:database:create
+
+
+4) Generar esquemas:
+
+php app/console doctrine:schema:update --force

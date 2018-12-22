@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Persona</h1>
+<div class="container">
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ persona.id }}</td>
+            </tr>
+            <tr>
+                <th  scope="row">Nrolegajo</th>
+                <td>{{ persona.nroLegajo }}</td>
+            </tr>
+            <tr>
+                <th  scope="row">Nombre</th>
+                <td>{{ persona.nombre }}</td>
+            </tr>
+            <tr>
+                <th  scope="row">Fechanacimiento</th>
+                <td>{% if persona.fechaNacimiento %}{{ persona.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th  scope="row">Edad</th>
+                <td>{{ persona.edad }}</td>
+            </tr>
+            <tr>
+                <th  scope="row">Tipodoc</th>
+                <td>{{ persona.tipoDoc }}</td>
+            </tr>
+            <tr>
+                <th  scope="row">Nrodoc</th>
+                <td>{{ persona.nroDoc }}</td>
+            </tr>
+            <tr>
+                <th  scope="row">Cuil</th>
+                <td>{{ persona.cuil }}</td>
+            </tr>
+            <tr>
+                <th  scope="row">Prepaga</th>
+                <td>{{ persona.prepaga }}</td>
+            </tr>
+            <tr>
+                <th  scope="row">Puesto</th>
+                <td>{{ persona.puesto }}</td>
+            </tr>
+            <tr>
+                <th  scope="row">Numcelular</th>
+                <td>{{ persona.numCelular }}</td>
+            </tr>
+            <tr>
+                <th  scope="row">Mail</th>
+                <td>{{ persona.mail }}</td>
+            </tr>
+            <tr>
+                <th  scope="row">Fechaingreso</th>
+                <td>{% if persona.fechaIngreso %}{{ persona.fechaIngreso|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th  scope="row">Fechafin</th>
+                <td>{% if persona.fechaFin %}{{ persona.fechaFin|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    <ul>
+        <li>
+            <a href="{{ path('persona_index') }}">Volver a la lista</a>
+        </li>
+        <li>
+            <a href="{{ path('persona_edit', { 'id': persona.id }) }}">Editar</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,24 @@
+persona_index:
+    path:     /
+    defaults: { _controller: "ABMBundle:Persona:index" }
+    methods:  GET
+
+persona_show:
+    path:     /{id}/show
+    defaults: { _controller: "ABMBundle:Persona:show" }
+    methods:  GET
+
+persona_new:
+    path:     /new
+    defaults: { _controller: "ABMBundle:Persona:new" }
+    methods:  [GET, POST]
+
+persona_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ABMBundle:Persona:edit" }
+    methods:  [GET, POST]
+
+persona_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ABMBundle:Persona:delete" }
+    methods:  DELETE

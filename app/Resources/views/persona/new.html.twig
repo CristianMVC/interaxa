@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Crear Persona</h1>
+    <br />
+<div class="container-fluid" style="position: relative; width:70%;" >
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Crear" />
+    {{ form_end(form) }}
+  <br />
+    <ul class="list-group">
+        <li style="list-style:none;">
+            <a href="{{ path('persona_index') }}">Volver a la lista</a>
+        </li>
+    </ul>
+   
+   </div> 
+{% endblock %}
