@@ -39,8 +39,7 @@ class PersonaController extends Controller
         $form = $this->createForm('ABMBundle\Form\PersonaType', $persona);
       
         $form->handleRequest($request);
-        
-        
+      
         
       if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -49,7 +48,7 @@ class PersonaController extends Controller
 
             return $this->redirectToRoute('persona_show', array('id' => $persona->getId()));
         }
-
+  
         return $this->render('persona/new.html.twig', array(
             'persona' => $persona,
             'form' => $form->createView(),

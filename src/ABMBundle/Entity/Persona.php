@@ -25,6 +25,12 @@ class Persona
 
     /**
      * @var string
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 150,
+     *      minMessage = "Nombre muy corto",
+     *      maxMessage = "Nombre muy largo"
+     * )
      */
     private $nombre;
 
@@ -35,6 +41,12 @@ class Persona
 
     /**
      * @var int
+     * @Assert\Length(
+     *      min = 1,
+     *      max = 3,
+     *      minMessage = "Valor invalido",
+     *      maxMessage = "Valor invalido"
+     * )
      */
     private $edad;
 
@@ -44,12 +56,24 @@ class Persona
     private $tipoDoc;
 
     /**
-     * @var string
+     * @var integer
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 50,
+     *      minMessage = "Valor invalido",
+     *      maxMessage = "valor invalido"
+     * )
      */
     private $nroDoc;
 
     /**
      * @var string
+     * @Assert\Length(
+     *      min = 6,
+     *      max = 10,
+     *      minMessage = "Valor demasiado coroto",
+     *      maxMessage = "Valor demasiado largo"
+     * )
      */
     private $cuil;
 
@@ -79,7 +103,10 @@ class Persona
 
     /**
      * @var string
-     */
+     * @Assert\Email(
+     *  message = "Email invalido.")    
+      */
+     
     private $mail;
 
     /**

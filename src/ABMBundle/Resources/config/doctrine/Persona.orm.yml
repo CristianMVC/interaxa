@@ -52,7 +52,7 @@ ABMBundle\Entity\Persona:
                 fixed: false
             column: Tipo_doc
         nroDoc:
-            type: string
+            type: integer
             nullable: false
             length: 255
             options:
