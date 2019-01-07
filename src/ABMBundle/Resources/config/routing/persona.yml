@@ -22,3 +22,4 @@ persona_delete:
     path:     /{id}/delete
     defaults: { _controller: "ABMBundle:Persona:delete" }
     methods:  DELETE
+      

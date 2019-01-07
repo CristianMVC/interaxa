@@ -61,6 +61,13 @@ class PersonaController extends Controller
      */
     public function showAction(Persona $persona)
     {
+        
+     //  foreach($persona->getVacaciones() as $v)
+       //{
+        // var_dump($v->getDesde());
+        
+      // }
+       
         $deleteForm = $this->createDeleteForm($persona);
      
         return $this->render('persona/show.html.twig', array(

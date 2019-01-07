@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+<script>
+
+function openMind(id){
+   
+  $('#'+id).show();  
+    
+}
+
+function closeMind(id){
+   
+  $('#'+id).hide();  
+    
+}
+
+
+
+
+
+
+
+</script>
+
+    <h1>Periodos</h1>
+<div class="container-fluid"  >
+    <table class="table table-responsive">
+    <thead>
+      <tr class="table-info">
+           <td><b>Nombre:</b>  {{persona.nombre}}  </td>
+            <td><b>Puesto:</b>  {{persona.puesto}}  </td>
+          </tr> 
+            <tr class="table-dark">
+                
+                <th>periodo</th>
+                <th>dias del periodo</th>
+                <th>dias restantes</th>
+            </tr>
+         </thead>
+         <tbody>
+                                
+          {% for v in vacacione %}
+          <tr >          
+          
+                 <td>{{ v.periodo }}</td>
+                 <td>{{ v.diasPeriodo }}</td>
+                 <td>{{ v.diasRestantes }}</td> 
+                 <td><button id="detalle" class="btn btn-primary" onclick="openMind({{v.id}})">detalle</button></td>    
+          </tr>  
+          <tr id="{{ v.id}}"  style="display: none;">
+          <td>
+         
+          
+          <b>Dias con goce de sueldo: </b>{{ v.conGoce }}<br /><br />
+          <b>Dias sin goce de sueldo: </b> {{ v.sinGoce }}<br /><br />  
+          <button  class="btn btn-outline-secondary" onclick="closeMind({{v.id}})">cerrar</button>
+          </td>
+         
+          </tr> 
+               
+           {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
+
+
+
+

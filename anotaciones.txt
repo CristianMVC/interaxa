@@ -13,3 +13,10 @@ php app/console doctrine:database:create
 4) Generar esquemas:
 
 php app/console doctrine:schema:update --force
+
+
+--->
+
+generar nueva entidad:
+
+ php app/console doctrine:generate:entity

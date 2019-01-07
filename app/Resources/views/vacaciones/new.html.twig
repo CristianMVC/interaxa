@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Agregar nuevo periodo</h1>
+    <br />
+<div class="container-fluid" style="position: relative; width:70%;" >
+    {{ form_start(form) }}   
+        {{ form_widget(form) }}
+        <input type="submit" value="Agregar" />
+    {{ form_end(form) }}
+</br>
+    <ul>
+        <li>
+            <a href="{{ path('vacaciones_index') }}">Volver a la lista</a>
+        </li>
+    </ul>
+</div>    
+{% endblock %}

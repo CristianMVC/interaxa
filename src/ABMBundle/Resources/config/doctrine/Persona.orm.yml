@@ -19,7 +19,7 @@ ABMBundle\Entity\Persona:
                 unsigned: false
             id: true
             generator:
-                strategy: IDENTITY
+                strategy: auto
     fields:
         nroLegajo:
             type: integer
@@ -85,8 +85,8 @@ ABMBundle\Entity\Persona:
         fechaFin:
             type: date
             nullable: false
-            column: Fecha_fin
-    oneToOne:
+            column: Fecha_fin     
+    manyToOne:
         prepaga:
             targetEntity: Prepaga
             cascade: {  }
@@ -104,5 +104,10 @@ ABMBundle\Entity\Persona:
             joinColumns:
                 puesto_id:
                     referencedColumnName: codigo
-            orphanRemoval: false            
+            orphanRemoval: false 
+    oneToMany:
+        vacaciones:
+            targetEntity: Vacaciones
+            mappedBy: personas
+                          
     lifecycleCallbacks: {  }

@@ -2,3 +2,6 @@ abm_persona:
     resource: "@ABMBundle/Resources/config/routing/persona.yml"
     prefix:   /
 
+abm_persona_vacaciones:
+    resource: "@ABMBundle/Resources/config/routing/vacaciones.yml"
+    prefix:   /persona

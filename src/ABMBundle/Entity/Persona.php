@@ -2,7 +2,7 @@
 
 namespace ABMBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\OneToOne;
+use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\JoinColumn;
 use ABMBundle\Entity\Prepaga;
 use ABMBundle\Entity\Puesto;
@@ -15,6 +15,7 @@ class Persona
 {
     /**
      * @var int
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -79,19 +80,15 @@ class Persona
 
 
    /**
-     * @ORM\OneToOne(targetEntity="\ABMBundle\Entity\Prepaga")
+     * @ORM\ManyToOne(targetEntity="\ABMBundle\Entity\Prepaga")
      * @JoinColumn(name="prepaga_id", referencedColumnName="codigo")
      */ 
     private $prepaga;
     
-  public function __construct()
-    {
-        $this->prepaga = new ArrayCollection();
-    }
 
 
    /**
-     * @ORM\OneToOne(targetEntity="\ABMBundle\Entity\Puesto")
+     * @ORM\ManyToOne(targetEntity="\ABMBundle\Entity\Puesto")
      * @JoinColumn(name="puesto_id", referencedColumnName="codigo")
      */  
     private $puesto;
@@ -119,10 +116,30 @@ class Persona
      */
     private $fechaFin;
 
+     /**
+     * @ORM\OneToMany(targetEntity="Vacaciones", mappedBy="personas")
+     */
+   private $vacaciones;
 
- 
-
-
+     public function __construct()
+    {
+        $this->vacaciones = new ArrayCollection();
+    }
+    
+      public function addUser(Vacaciones $vacaciones)
+    {
+        
+            $this->getVacaciones()->add($vacaciones);
+        
+    }
+    
+    /**
+     * @return Collection
+     */
+    public function getVacaciones() {
+        return $this->vacaciones;
+    }
+    
 
     /**
      * Get id
@@ -454,8 +471,11 @@ class Persona
     return $this->puesto;
    } 
    
-    
-    
+   
+    public function __toString() 
+    {
+       return $this->getNombre();
+    }
     
     
 }

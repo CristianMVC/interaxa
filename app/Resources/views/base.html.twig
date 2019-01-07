@@ -7,14 +7,25 @@
         <link rel="stylesheet"  href="{{ asset('public/css/bootstrap.min.css') }}" />
         <link rel="stylesheet"  href="{{ asset('public/style.css') }}" />
         {% endblock %}
+        {% block javascripts %}
+        <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('public/jquery-3.3.1.min.js') }}"></script>
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}
-        <script src="{{ asset('public/css/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('public/jquery-3.3.1.min.js') }}"></script>
+        {% block body %}
+        
+        
+        
         {% endblock %}
-    </body>
+         <footer class="page-footer font-small blue" style="background-color: lightskyblue; position:relative; margin-top:10% ">
+
+  
+  <div class="footer-copyright text-center py-3">2018 Copyright:
+    <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+  </div>
 </html>
+    </body>
+   

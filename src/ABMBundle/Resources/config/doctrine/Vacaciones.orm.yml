@@ -1,0 +1,45 @@
+ABMBundle\Entity\Vacaciones:
+    type: entity
+    table: null
+    repositoryClass: ABMBundle\Repository\VacacionesRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        periodo:
+            type: integer
+        diasPeriodo:
+            type: integer
+            column: dias_periodo
+        diasRestantes:
+            type: integer
+            column: dias_restantes        
+        conGoce:
+            type: integer
+            nullable: true
+            column: con_goce
+            nullable: true
+        sinGoce:
+            type: integer
+            nullable: true
+            column: sin_goce  
+        fechaInicio:
+            type: date
+            nullable: true
+        fechaFin:
+            type: date 
+            nullable: true       
+    manyToOne:
+        personas:
+            targetEntity: Persona
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                persona_id:
+                    referencedColumnName: id
+                          
+    lifecycleCallbacks: {  }

@@ -59,4 +59,14 @@ class Puesto
     {
        return $this->getDescripcion();
     }
+
+    /**
+     * Get codigo
+     *
+     * @return integer
+     */
+    public function getCodigo()
+    {
+        return $this->codigo;
+    }
 }

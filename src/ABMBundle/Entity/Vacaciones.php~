@@ -1,0 +1,50 @@
+<?php
+
+namespace ABMBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\OneToMany;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * Vacaciones
+ */
+class Vacaciones
+{
+    /**
+     * @var int
+     */
+    private $id;
+    
+    
+    
+    /**
+     * @var int
+     */
+     
+    private $periodo;
+
+
+    /**
+     * @var \DateTime
+     */
+    private $desde;
+
+    /**
+     * @var \DateTime
+     */
+    private $hasta;
+
+    /**
+     * @var int
+     */
+    private $conGoce;
+
+    /**
+     * @var int
+     */
+    private $sinGoce;
+
+    
+    
+}

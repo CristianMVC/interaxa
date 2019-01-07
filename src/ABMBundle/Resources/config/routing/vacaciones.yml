@@ -1,0 +1,24 @@
+vacaciones_index:
+    path:     /vacaciones
+    defaults: { _controller: "ABMBundle:Vacaciones:index" }
+    methods:  GET
+
+vacaciones_show:
+    path:     /{id}/show
+    defaults: { _controller: "ABMBundle:Vacaciones:show" }
+    methods:  GET
+
+vacaciones_new:
+    path:     /{id}/vacaciones/new
+    defaults: { _controller: "ABMBundle:Vacaciones:new" }
+    methods:  [GET, POST]
+
+vacaciones_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ABMBundle:Vacaciones:edit" }
+    methods:  [GET, POST]
+
+vacaciones_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ABMBundle:Vacaciones:delete" }
+    methods:  DELETE

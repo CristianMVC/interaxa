@@ -10,13 +10,9 @@ class Puesto
     /**
      * @var int
      */
-    private $id;
-
-    /**
-     * @var int
-     */
     private $codigo;
 
+   
     /**
      * @var string
      */
@@ -33,29 +29,7 @@ class Puesto
         return $this->id;
     }
 
-    /**
-     * Set codigo
-     *
-     * @param integer $codigo
-     *
-     * @return Puesto
-     */
-    public function setCodigo($codigo)
-    {
-        $this->codigo = $codigo;
-
-        return $this;
-    }
-
-    /**
-     * Get codigo
-     *
-     * @return int
-     */
-    public function getCodigo()
-    {
-        return $this->codigo;
-    }
+  
 
     /**
      * Set descripcion
@@ -79,5 +53,10 @@ class Puesto
     public function getDescripcion()
     {
         return $this->descripcion;
+    }
+    
+    public function __toString() 
+    {
+       return $this->getDescripcion();
     }
 }

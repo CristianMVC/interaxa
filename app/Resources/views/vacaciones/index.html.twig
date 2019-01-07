@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Vacaciones list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Idpersona</th>
+                <th>Periodo</th>
+                <th>Desde</th>
+                <th>Hasta</th>
+                <th>Congoce</th>
+                <th>Singoce</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vacacione in vacaciones %}
+            <tr>
+                <td><a href="{{ path('vacaciones_show', { 'id': vacacione.id }) }}">{{ vacacione.id }}</a></td>
+                <td>{{ vacacione.idPersona }}</td>
+                <td>{{ vacacione.periodo }}</td>
+                <td>{% if vacacione.desde %}{{ vacacione.desde|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if vacacione.hasta %}{{ vacacione.hasta|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ vacacione.conGoce }}</td>
+                <td>{{ vacacione.sinGoce }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('vacaciones_show', { 'id': vacacione.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('vacaciones_edit', { 'id': vacacione.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('vacaciones_new') }}">Create a new vacacione</a>
+        </li>
+    </ul>
+{% endblock %}

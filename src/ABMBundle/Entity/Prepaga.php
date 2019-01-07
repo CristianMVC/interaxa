@@ -72,4 +72,14 @@ class Prepaga
     
     
     
+
+    /**
+     * Get codigo
+     *
+     * @return integer
+     */
+    public function getCodigo()
+    {
+        return $this->codigo;
+    }
 }

@@ -10,12 +10,8 @@ class Prepaga
     /**
      * @var int
      */
-    private $id;
-
-    /**
-     * @var int
-     */
     private $codigo;
+
 
     /**
      * @var string
@@ -33,29 +29,7 @@ class Prepaga
         return $this->id;
     }
 
-    /**
-     * Set codigo
-     *
-     * @param integer $codigo
-     *
-     * @return Prepaga
-     */
-    public function setCodigo($codigo)
-    {
-        $this->codigo = $codigo;
-
-        return $this;
-    }
-
-    /**
-     * Get codigo
-     *
-     * @return int
-     */
-    public function getCodigo()
-    {
-        return $this->codigo;
-    }
+   
 
     /**
      * Set descripcion
@@ -80,4 +54,22 @@ class Prepaga
     {
         return $this->descripcion;
     }
+    
+    
+    // Hay que utilizar este metodo para que la entidad pueda parsear los datos devueltos en formato String,
+    // caso contrario al armar el formulario daria error
+    
+    public function __toString() 
+    {
+       return $this->getDescripcion();
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
