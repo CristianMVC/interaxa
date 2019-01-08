@@ -19,14 +19,10 @@ function closeMind(id){
 
 
 
-
-
-
-
 </script>
 
     <h1>Periodos</h1>
-<div class="container-fluid"  >
+<div class="container-fluid"   >
     <table class="table table-responsive">
     <thead>
       <tr class="table-info">
@@ -53,12 +49,51 @@ function closeMind(id){
           <tr id="{{ v.id}}"  style="display: none;">
           <td>
          
-          
+          {%if v.conGoce == null   %}
+           <b>Dias con goce de sueldo: <b style="color: red;">Sin datos</b><br /><br />
+          {% else %}
           <b>Dias con goce de sueldo: </b>{{ v.conGoce }}<br /><br />
+          
+          {% endif %}
+          
+          {%if  v.sinGoce == null   %}
+           <b>Dias sin goce de sueldo: <b style="color: red;">Sin datos</b><br /><br />
+          {% else %}
           <b>Dias sin goce de sueldo: </b> {{ v.sinGoce }}<br /><br />  
-          <button  class="btn btn-outline-secondary" onclick="closeMind({{v.id}})">cerrar</button>
-          </td>
-         
+          {% endif %}
+          
+          
+          {%if v.fechaInicio == null   %}
+           <b>Fecha de inicio: <b style="color: red;">Sin datos</b><br /><br />
+          {% else %}
+          <b>Dias con goce de sueldo: </b>{{ v.fechaInicio|date("m/d/Y") }}<br /><br />
+          
+          {% endif %}
+          
+           {%if v.fechaFin == null   %}
+           <b>Fecha de fin: <b style="color: red;">Sin datos</b><br /><br />
+          {% else %}
+          <b>Dias con goce de sueldo: </b>{{ v.fechaFin|date("m/d/Y") }}<br /><br />
+          
+          {% endif %}
+          
+          <div  class="container">
+           <div class="row">
+           
+           <div>
+           <button  class="btn btn-outline-secondary" onclick="closeMind({{v.id}})">cerrar</button>
+           </div>
+          
+            
+             
+           <div style="position: relative; left: 2%;">
+           <form method="get" action="{{ path('vacaciones_edit', { 'id' : v.id }) }}">
+           <input type="submit" class="btn btn-success" value="modificar"/>
+           </form>
+          
+           </div>
+           </div>
+           
           </tr> 
                
            {% endfor %}

@@ -77,22 +77,50 @@ class VacacionesController extends Controller
      * Displays a form to edit an existing vacacione entity.
      *
      */
-    public function editAction(Request $request, Vacaciones $vacacione)
+    public function editAction(Request $request)
     {
-        $deleteForm = $this->createDeleteForm($vacacione);
-        $editForm = $this->createForm('ABMBundle\Form\VacacionesType', $vacacione);
-        $editForm->handleRequest($request);
+        
+                      
+        $em = $this->getDoctrine()->getEntityManager();
+        $vacaciones = $em->getRepository('ABMBundle:Vacaciones')->find($request->get('id'));
+        
+        $form = $this->createFormBuilder($vacaciones )
+        ->add('diasPeriodo')
+        ->add('conGoce')
+        ->add('sinGoce')
+        ->add('fechaInicio','date',array('format' => 'dd-MM-yyyy', 'years' => range($vacaciones->getPeriodo(), 2050 , +1)))
+        ->add('fechaFin','date',array('format' => 'dd-MM-yyyy', 'years' => range($vacaciones->getPeriodo(), 2050 , +1)))
+        ->getForm();
+        
+        $form->handleRequest($request);
+        
+     
+        
+        if ($form->isValid()) {
+           
+           if($vacaciones->getFechaFin() < $vacaciones->getFechaInicio())
+             {
+                  return $this->render('vacaciones/edit.html.twig', array(
+                      'vacacione' => $vacaciones,
+                      'edit_form' => $form->createView(),
+                      'error_fecha' => 'El campo fecha fin debe ser mayor al campo fecha inicio',
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('vacaciones_edit', array('id' => $vacacione->getId()));
-        }
+                       ));
+               
+             }
+             
+             $vacaciones->setDiasRestantes(abs($vacaciones->getDiasRestantes() - $vacaciones->getConGoce()));
+             $em->persist($vacaciones);
+             $em->flush();
+                     
+            }
+       
+    
 
         return $this->render('vacaciones/edit.html.twig', array(
-            'vacacione' => $vacacione,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'vacacione' => $vacaciones,
+            'edit_form' => $form->createView(),
+
         ));
     }
 

@@ -1,21 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Vacacione edit</h1>
-
+  
+<div class="container-fluid" style="width: 70%;"  >
+  <h1><b>Periodo {{vacacione.periodo }}</b></h1><br />
+    <table class="table table-responsive">
+    
+    
+    
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+        {{ form_widget(edit_form) }}<br />
+        
+        {% if  error_fecha is defined %}        
+         <b style="color: red;">{{error_fecha}}</b><br /><br />
+        {% endif %}
+        
+        <input type="submit" value="Guardar" />
     {{ form_end(edit_form) }}
 
-    <ul>
+    <ul style="list-style:none;"><br />
         <li>
-            <a href="{{ path('vacaciones_index') }}">Back to the list</a>
+            <a href="{{ path('vacaciones_index') }}">Volver</a>
         </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
+        
     </ul>
+    
+  </div>
+</div>    
 {% endblock %}
