@@ -1,12 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Agregar nuevo periodo</h1>
+
     <br />
 <div class="container-fluid" style="position: relative; width:70%;" >
+   <h1><b>Agregar nuevo periodo</b></h1><br /><br />
     {{ form_start(form) }}   
         {{ form_widget(form) }}
-        <input type="submit" value="Agregar" />
+        <input class="btn btn-outline-primary" type="submit" value="Agregar" />
     {{ form_end(form) }}
 </br>
     <ul>
