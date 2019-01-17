@@ -1,80 +1,89 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Persona</h1>
-<div class="container">
-    <table>
+  
+<div  class="container-fluid"  >
+   <h1><b>Persona</b></h1>
+    <table class="table table-responsive table-striped">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th >Id</th>
                 <td>{{ persona.id }}</td>
             </tr>
             <tr>
-                <th  scope="row">Nrolegajo</th>
+                <th  scope="row">Nrolegajo:</th>
                 <td>{{ persona.nroLegajo }}</td>
             </tr>
             <tr>
-                <th  scope="row">Nombre</th>
+                <th  scope="row">Nombre:</th>
                 <td>{{ persona.nombre }}</td>
             </tr>
             <tr>
-                <th  scope="row">Fechanacimiento</th>
+                <th  scope="row">Fechanacimiento:</th>
                 <td>{% if persona.fechaNacimiento %}{{ persona.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
-                <th  scope="row">Edad</th>
+                <th  scope="row">Edad:</th>
                 <td>{{ persona.edad }}</td>
             </tr>
             <tr>
-                <th  scope="row">Tipodoc</th>
+                <th  scope="row">Tipodoc:</th>
                 <td>{{ persona.tipoDoc }}</td>
             </tr>
             <tr>
-                <th  scope="row">Nrodoc</th>
+                <th  scope="row">Nrodoc:</th>
                 <td>{{ persona.nroDoc }}</td>
             </tr>
             <tr>
-                <th  scope="row">Cuil</th>
+                <th  scope="row">Cuil:</th>
                 <td>{{ persona.cuil }}</td>
             </tr>
             <tr>
-                <th  scope="row">Prepaga</th>
+                <th  scope="row">Prepaga:</th>
                 <td>{{ persona.prepaga }}</td>
             </tr>
             <tr>
-                <th  scope="row">Puesto</th>
+                <th  scope="row">Puesto:</th>
                 <td>{{ persona.puesto }}</td>
             </tr>
             <tr>
-                <th  scope="row">Numcelular</th>
+                <th  scope="row">Numcelular:</th>
                 <td>{{ persona.numCelular }}</td>
             </tr>
             <tr>
-                <th  scope="row">Mail</th>
+                <th  scope="row">Mail:</th>
                 <td>{{ persona.mail }}</td>
             </tr>
             <tr>
-                <th  scope="row">Fechaingreso</th>
+                <th  scope="row">Fechaingreso:</th>
                 <td>{% if persona.fechaIngreso %}{{ persona.fechaIngreso|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
-                <th  scope="row">Fechafin</th>
+                <th  scope="row">Fechafin:</th>
                 <td>{% if persona.fechaFin %}{{ persona.fechaFin|date('Y-m-d') }}{% endif %}</td>
             </tr>
         </tbody>
+        
+        
+        
     </table>
-</div>
-    <ul>
-        <li>
+
+    <ul> 
+     <li style="list-style:none; width:6%; float: left;">
+            <a  class="btn btn-outline-success" href="{{ path('persona_edit', { 'id': persona.id }) }}">Editar</a>
+    </li> 
+     <li style="list-style:none; width:6%; float: left;">      
+            {{ form_start(delete_form) }}
+                <input class="btn btn-outline-danger" type="submit" value="Eliminar">
+            {{ form_end(delete_form) }}
+    </li> 
+    <br /> <br /><br />
+  
+        <li style="list-style:none;">
             <a href="{{ path('persona_index') }}">Volver a la lista</a>
         </li>
-        <li>
-            <a href="{{ path('persona_edit', { 'id': persona.id }) }}">Editar</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
     </ul>
+        
+    
+</div>
 {% endblock %}

@@ -2,6 +2,10 @@ ABMBundle\Entity\Vacaciones:
     type: entity
     table: null
     repositoryClass: ABMBundle\Repository\VacacionesRepository
+    uniqueConstraints:
+        UNIQ_51E5B69BE2E5391U:
+            columns:
+                - periodo
     id:
         id:
             type: integer

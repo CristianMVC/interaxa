@@ -40,11 +40,11 @@ class VacacionesController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $vacacione->setDiasRestantes(0);
+            $vacacione->setDiasRestantes($vacacione->getDiasPeriodo());
             $em->persist($vacacione);
             $em->flush();
 
-            return $this->redirectToRoute('vacaciones_show', array('id' => $vacacione->getId()));
+            return $this->redirectToRoute('vacaciones_show', array('id' => $request->get('id')));
         }
       
         return $this->render('vacaciones/new.html.twig', array(
@@ -98,28 +98,43 @@ class VacacionesController extends Controller
         
         if ($form->isValid()) {
            
-           if($vacaciones->getFechaFin() < $vacaciones->getFechaInicio())
+           if($vacaciones->getFechaFin() <= $vacaciones->getFechaInicio())
              {
                   return $this->render('vacaciones/edit.html.twig', array(
                       'vacacione' => $vacaciones,
                       'edit_form' => $form->createView(),
+                      'id_persona' => $request->get('id_persona'),
                       'error_fecha' => 'El campo fecha fin debe ser mayor al campo fecha inicio',
-
+                      
                        ));
                
              }
+             if( $vacaciones->getConGoce() > $vacaciones->getDiasPeriodo()){
+                
+                 $resultado =  abs($vacaciones->getConGoce() - $vacaciones->getDiasPeriodo());
+                
+                 return $this->render('vacaciones/edit.html.twig', array(
+                        'vacacione' => $vacaciones,
+                        'edit_form' => $form->createView(),
+                        'id_persona' => $request->get('id_persona'),
+                        'error_dias_restantes' => "Los dias con goce de sueldo no pueden superar a los dias del periodo.
+                                                   Debe ingresar los dias restantes(".$resultado."), en dias sin goce de sueldo.",
+              )); 
+                
+             }
+             
              
              $vacaciones->setDiasRestantes(abs($vacaciones->getDiasRestantes() - $vacaciones->getConGoce()));
              $em->persist($vacaciones);
              $em->flush();
                      
             }
-       
-    
+  
 
         return $this->render('vacaciones/edit.html.twig', array(
             'vacacione' => $vacaciones,
             'edit_form' => $form->createView(),
+            'id_persona' => $request->get('id_persona'),
 
         ));
     }

@@ -11,16 +11,20 @@
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}<br />
         
+        {% if  error_dias_restantes is defined %}        
+         <b style="color: red;">{{error_dias_restantes}}</b><br /><br />
+        {% endif %}
+        
         {% if  error_fecha is defined %}        
          <b style="color: red;">{{error_fecha}}</b><br /><br />
         {% endif %}
         
-        <input type="submit" value="Guardar" />
+        <input class="btn btn-outline-primary" type="submit" value="Guardar" />
     {{ form_end(edit_form) }}
 
     <ul style="list-style:none;"><br />
         <li>
-            <a href="{{ path('vacaciones_index') }}">Volver</a>
+            <a href="{{ path('vacaciones_show', { 'id' : id_persona }) }}">Volver</a>
         </li>
         
     </ul>

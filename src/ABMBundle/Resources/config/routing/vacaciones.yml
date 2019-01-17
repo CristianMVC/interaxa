@@ -14,7 +14,7 @@ vacaciones_new:
     methods:  [GET, POST]
 
 vacaciones_edit:
-    path:     vacaciones/{id}/edit
+    path:     vacaciones/{id}/edit/{id_persona}
     defaults: { _controller: "ABMBundle:Vacaciones:edit" }
     methods:  [GET, POST]
 

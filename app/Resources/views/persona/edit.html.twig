@@ -1,32 +1,39 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Editar Persona</h1></br>
-<div class="container-fluid" style="position: relative; width:70%;" >
+   
+<div class="container-fluid" style="width: 70%;"  >
+<h1><b>Editar Persona</b></h1><br />
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+        <input class="btn btn-outline-primary" type="submit" value="Guardar" />
     {{ form_end(edit_form) }}
  
 
 
 
     <ul>
-        <li style="list-style:none;"><br />
-            <a href="{{ path('persona_index') }}">Volver a la lista</a>
-        </li><br />
+        <br />
          <li style="list-style:none;">
      <form method="get" action="{{ path('vacaciones_new', { 'id' : persona.id }) }}">
-     <input type="submit" value="Agregar periodo vacaciones" />
+     <input class="btn btn-outline-success" type="submit" value="Agregar periodo vacaciones" />
      </form>
      </br>
+     
+      <form method="get" action="{{ path('vacaciones_show', { 'id' : persona.id }) }}">
+     <input class="btn btn-outline-success" type="submit" value="Ver periodos" />
+     </form>
+    </br>
     </li>
         <li style="list-style:none;">
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete"/>
+                <input class="btn btn-outline-danger" type="submit" value="Borrar persona"/>
             {{ form_end(delete_form) }}
         </li>
-
+        
+<li style="list-style:none;"><br />
+            <a href="{{ path('persona_index') }}">Volver a la lista</a>
+        </li><br />
     </ul>
     </div>
 {% endblock %}

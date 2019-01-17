@@ -7,13 +7,13 @@
 
 function openMind(id){
    
-  $('#'+id).show();  
+  $('#'+id).fadeIn();  
     
 }
 
 function closeMind(id){
    
-  $('#'+id).hide();  
+  $('#'+id).fadeOut("fast");  
     
 }
 
@@ -21,9 +21,11 @@ function closeMind(id){
 
 </script>
 
-    <h1>Periodos</h1>
-<div class="container-fluid"   >
-    <table class="table table-responsive">
+
+<div class="container-fluid" style="position: relative; width:70%;"  >
+ <h1><b>Periodos</b></h1>
+ 
+    <table class="table table-responsive" style="width: 100%; ">
     <thead>
       <tr class="table-info">
            <td><b>Nombre:</b>  {{persona.nombre}}  </td>
@@ -31,14 +33,20 @@ function closeMind(id){
           </tr> 
             <tr class="table-dark">
                 
-                <th>periodo</th>
+                <th>periodo(a&ntilde;o)</th>
                 <th>dias del periodo</th>
                 <th>dias restantes</th>
             </tr>
          </thead>
          <tbody>
-                                
+          {% set totalRestante = 0 %}
+          {% set conGoce = 0 %}
+          {% set sinGoce = 0 %} 
+                              
           {% for v in vacacione %}
+          
+          {% set totalRestante =  totalRestante + v.diasRestantes %}
+                  
           <tr >          
           
                  <td>{{ v.periodo }}</td>
@@ -53,27 +61,28 @@ function closeMind(id){
            <b>Dias con goce de sueldo: <b style="color: red;">Sin datos</b><br /><br />
           {% else %}
           <b>Dias con goce de sueldo: </b>{{ v.conGoce }}<br /><br />
-          
+          {% set conGoce =  conGoce + v.conGoce %}
           {% endif %}
           
           {%if  v.sinGoce == null   %}
            <b>Dias sin goce de sueldo: <b style="color: red;">Sin datos</b><br /><br />
           {% else %}
           <b>Dias sin goce de sueldo: </b> {{ v.sinGoce }}<br /><br />  
+          {% set sinGoce =  sinGoce + v.sinGoce %}
           {% endif %}
           
           
           {%if v.fechaInicio == null   %}
            <b>Fecha de inicio: <b style="color: red;">Sin datos</b><br /><br />
           {% else %}
-          <b>Dias con goce de sueldo: </b>{{ v.fechaInicio|date("m/d/Y") }}<br /><br />
+          <b>Fecha inicio: </b>{{ v.fechaInicio|date("m/d/Y") }}<br /><br />
           
           {% endif %}
           
            {%if v.fechaFin == null   %}
            <b>Fecha de fin: <b style="color: red;">Sin datos</b><br /><br />
           {% else %}
-          <b>Dias con goce de sueldo: </b>{{ v.fechaFin|date("m/d/Y") }}<br /><br />
+          <b>Fecha fin: </b>{{ v.fechaFin|date("m/d/Y") }}<br /><br />
           
           {% endif %}
           
@@ -87,18 +96,37 @@ function closeMind(id){
             
              
            <div style="position: relative; left: 2%;">
-           <form method="get" action="{{ path('vacaciones_edit', { 'id' : v.id }) }}">
+           <form method="get" action="{{ path('vacaciones_edit', { 'id' : v.id , 'id_persona': persona.id}) }}">
            <input type="submit" class="btn btn-success" value="modificar"/>
            </form>
           
            </div>
            </div>
-           
+           </div>
           </tr> 
                
            {% endfor %}
         </tbody>
+      
     </table>
+    
+     <table class="table table-responsive " style=" position:relative; width: 100%; ">
+     <thead class="thead-dark">
+      <tr class="table-info">
+         <th> Total dias restantes  </th>
+         <th> Total dias con goce de sueldo  </th>
+         <th> Total dias sin goce de sueldo  </th>
+         </tr>
+     </thead>
+     <tbody>
+      <tr  style="color: red;  border: 1px solid black;" >
+       <th scope="row"  > {{totalRestante}} dias  </th>
+       <th scope="row"> {{conGoce}} dias </th>
+       <th scope="row"> {{sinGoce}} dias  </th>
+      </tr>
+     </tbody>
+     </table>
+     
 </div>
 
 {% endblock %}
