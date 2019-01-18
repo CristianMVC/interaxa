@@ -67,6 +67,12 @@ class Vacaciones
     
     private $fechaFin;
     
+    
+    /**
+     * @var integer
+     */
+    private $activo;
+    
 
     /**
      * Get id
@@ -251,7 +257,29 @@ class Vacaciones
     }            
     
     
-    
+    /**
+     * Set activo
+     *
+     * @param integer $activo
+     *
+     * @return Vacaciones
+     */
+    public function setActivo($activo = 0)
+    {
+        $this->activo = $activo;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaFin
+     *
+     * @return activo
+     */
+    public function getActivo()
+    {
+        return $this->activo;
+    }           
     
     
     

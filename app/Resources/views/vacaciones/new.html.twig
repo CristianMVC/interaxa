@@ -10,9 +10,13 @@
         <input class="btn btn-outline-primary" type="submit" value="Agregar" />
     {{ form_end(form) }}
 </br>
+{% if  error_periodo is defined %}
+<b style="color: red;">{{error_periodo}}</b></br></br>
+{% endif %}
     <ul>
         <li>
-            <a href="{{ path('vacaciones_index') }}">Volver a la lista</a>
+            <a  href="{{ path('persona_edit', { 'id' : id }) }}"> Volver </a>
+           
         </li>
     </ul>
 </div>    

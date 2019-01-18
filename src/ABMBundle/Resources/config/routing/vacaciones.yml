@@ -22,3 +22,8 @@ vacaciones_delete:
     path:     /{id}/delete
     defaults: { _controller: "ABMBundle:Vacaciones:delete" }
     methods:  DELETE
+
+cerrar_periodo:
+    path:   /vacaciones/cerrar/{id}/
+    defaults: { _controller: "ABMBundle:Vacaciones:cerrarPeriodo"}
+    methods:  POST 

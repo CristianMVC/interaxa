@@ -18,6 +18,28 @@ function closeMind(id){
 }
 
 
+function cerrarPeriodo(id){
+    
+ {% set id = 0 %}
+ var url = '{{ path("cerrar_periodo",{id: 'id'}) }}'; 
+ url = url.replace("id", id);
+
+    
+    if (confirm('Estas seguro de cerrar el periodo?')) {
+        
+        $.post( url , function( data ) {
+        location.reload();
+         
+        });
+        
+       } else {
+        
+       
+        
+       } 
+       
+}
+
 
 </script>
 
@@ -52,7 +74,18 @@ function closeMind(id){
                  <td>{{ v.periodo }}</td>
                  <td>{{ v.diasPeriodo }}</td>
                  <td>{{ v.diasRestantes }}</td> 
-                 <td><button id="detalle" class="btn btn-primary" onclick="openMind({{v.id}})">detalle</button></td>    
+                 <td><button id="detalle" class="btn btn-primary" onclick="openMind({{v.id}})">detalle</button></td>  
+                 <td>
+                 
+                 {% if v.activo == 0 %} 
+                  <button class="btn btn-light" id="cerrar" onclick="cerrarPeriodo({{v.id}})" name="cerrar">cerrar periodo </button> 
+                 {% endif %}
+                 
+                 {% if v.activo == 1 %} 
+                  <button class="btn btn-secondary" id="cerrado" style="opacity:0.2;" id="cerrar" onclick="alert('El perido esta cerrado, no se puede modificar.')"  name="cerrar"> periodo cerrado </button>
+                 {% endif %}
+                  
+                 </td>  
           </tr>  
           <tr id="{{ v.id}}"  style="display: none;">
           <td>
@@ -94,13 +127,16 @@ function closeMind(id){
            </div>
           
             
-             
-           <div style="position: relative; left: 2%;">
+           {% if v.activo == 0 %}  
+           <div id="mod" style="position: relative; left: 2%;">
            <form method="get" action="{{ path('vacaciones_edit', { 'id' : v.id , 'id_persona': persona.id}) }}">
            <input type="submit" class="btn btn-success" value="modificar"/>
            </form>
           
            </div>
+                  
+           {% endif %}
+           
            </div>
            </div>
           </tr> 
@@ -127,6 +163,12 @@ function closeMind(id){
      </tbody>
      </table>
      
+      <ul>
+        <li>
+            <a href="{{ path('persona_edit', { 'id' : persona.id }) }}">Volver</a>
+        </li>
+        
+    </ul>
 </div>
 
 {% endblock %}

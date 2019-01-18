@@ -39,17 +39,43 @@ class VacacionesController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $em = $this->getDoctrine()->getManager();
+            
+           $valores = $em->getRepository('ABMBundle:Vacaciones')->findAll();
+           $periodos[] = 0;
+           
+            foreach($valores as $v){
+                
+              $periodos[] = $v->getPeriodo();
+                
+            }
+            
+            
+     
+            if (in_array($vacacione->getPeriodo(), $periodos)) {
+             
+             return $this->render('vacaciones/new.html.twig', array(
+                                  'vacacione' => $vacacione,
+                                  'form' => $form->createView(),
+                                  'id' =>$request->get('id'),
+                                  'error_periodo' => "El perido ingresado ya existe!",
+                    ));    
+                
+            }else{
             $vacacione->setDiasRestantes($vacacione->getDiasPeriodo());
+            $vacacione->setActivo(0);
             $em->persist($vacacione);
             $em->flush();
-
+            }
+            
             return $this->redirectToRoute('vacaciones_show', array('id' => $request->get('id')));
         }
       
         return $this->render('vacaciones/new.html.twig', array(
             'vacacione' => $vacacione,
             'form' => $form->createView(),
+            'id' =>$request->get('id'),
         ));
     }
 
@@ -172,4 +198,26 @@ class VacacionesController extends Controller
             ->getForm()
         ;
     }
+    
+    
+    public function cerrarPeriodoAction(Request $request){
+        
+        
+        $em = $this->getDoctrine()->getManager();
+        $vacaciones = $em->getRepository('ABMBundle:Vacaciones')->find($request->get('id'));
+        
+        $vacaciones->setActivo(1);
+        
+        $em->persist($vacaciones);
+        $em->flush();
+        
+        exit();
+       
+        
+    }
+    
+    
+    
+    
+    
 }
