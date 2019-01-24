@@ -108,36 +108,108 @@ $(document).ready(function(){
 </script>
 
    
-<div class="container-fluid" style="width: 70%;"  >
+<div class="container-fluid"   >
 <h1><b>Editar Persona</b></h1><br />
 
-    {{ form_start(edit_form,{ 'attr': {'class': 'form-inline'} }) }}
 
-       {{ form_label(edit_form.nroLegajo)}}
+    {{ form_start(edit_form) }}
+
+
+<div class="form-bg">
+   
+        <div class="row" style="width:1200px;">
+           
+                <form class="form-horizontal">
+                    
+                        
+
+<div class="form-group"  >
+<div class="col-md-12 col-sm-12">
+       <label class=" control-label" > Numero de legajo </label>
        {{ form_widget(edit_form.nroLegajo,{ 'attr': {'class': 'form-control'} }) }}
+</div>
 
-       {{ form_label(edit_form.nombre)}}
+<div class="col-md-12 col-sm-12">
+       <label class=" control-label" > Nombre </label>
        {{ form_widget(edit_form.nombre,{ 'attr': {'class': 'form-control'} }) }}
+</div>
 
-       {{ form_label(edit_form.fechaNacimiento)}}
+<div class="col-md-12 col-sm-12">
+       <label class=" control-label" > Fecha de nacimiento </label>
        {{ form_widget(edit_form.fechaNacimiento,{ 'attr': {'class': 'form-control'} }) }}
+</div>
 
-       {{ form_label(edit_form.tipoDoc)}}
+<div class="col-md-12 col-sm-12">
+       <label class=" control-label" > Tipo documento </label>
        {{ form_widget(edit_form.tipoDoc,{ 'attr': {'class': 'form-control'} }) }}
+</div>
 
-       {{ form_label(edit_form.nroDoc)}}
+</div>
+<div class="form-group" >
+
+<div class="col-md-12 col-sm-12">
+       <label class=" control-label" > Numero de documento </label>
        {{ form_widget(edit_form.nroDoc,{ 'attr': {'class': 'form-control'} }) }}
+</div>
 
-       {{ form_label(edit_form.cuil)}}
+
+<div class="col-md-12 col-sm-12">
+       <label class=" control-label" > Cuil </label>
        {{ form_widget(edit_form.cuil,{ 'attr': {'class': 'form-control'} }) }}
+</div>
 
-       {{ form_label(edit_form.puesto)}}
+<div class="col-md-12 col-sm-12">
+       <label class=" control-label" > Puesto </label>
        {{ form_widget(edit_form.puesto,{ 'attr': {'class': 'form-control'} }) }}
+</div>
 
-       {{ form_label(edit_form.numCelular)}}
+<div class="col-md-12 col-sm-12">
+       <label class=" control-label" > Numero de celular </label>
        {{ form_widget(edit_form.numCelular,{ 'attr': {'class': 'form-control'} }) }}
+</div>
+
+</div>
+
+<div class="form-group" style="width:50%;">
+
+
+
+<div class="col-md-6 col-sm-12">
+       <label class=" control-label" > Email </label>
+       {{ form_widget(edit_form.mail,{ 'attr': {'class': 'form-control'} }) }}
+</div>
+
+<div class="col-md-6 col-sm-12">
+       <label class=" control-label" > Fecha de ingreso </label>
+       {{ form_widget(edit_form.fechaIngreso,{ 'attr': {'class': 'form-control'} }) }}
+</div>
+
+<div class="col-md-6 col-sm-12">
+       {{ form_label(edit_form.fechaFin)}}
+       {{ form_widget(edit_form.fechaFin,{ 'attr': {'class': 'form-control'} }) }}
+</div>
+
+<div class="col-md-6 col-sm-12">
+       <label class=" control-label" > Prepaga </label>
+       {{ form_widget(edit_form.prepaga,{ 'attr': {'class': 'form-control'} }) }}
+</div>
+
+
+
+
+        
+      </div>
+     </form>
+    </div>
+   </div>
+  
+ </div>
+
        
     {{ form_end(edit_form) }}
+
+
+
  <br>
  <input class="btn btn-outline-primary" type="submit" value="Guardar" />
 

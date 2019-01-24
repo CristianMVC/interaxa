@@ -30,6 +30,114 @@ list-style:none;
 }
 
 
+.form-bg{
+    background: #ffffff;
+    padding:2%;
+    border-radius:15px;
+    border:1px solid #ced4da;
+    box-shadow: -10px 10px 10px grey;
+
+}
+form{
+    font-family: 'Roboto Mono', monospace;
+    
+}
+.form-horizontal .form-group{
+    padding: 0 40px;
+
+}
+.form-horizontal .form-control{
+    height: 40px;
+    padding: 10px 5px;
+    border: none;
+    color: #fff;
+    border-bottom: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: none;
+    background: #9f636b;
+}
+.form-horizontal .form-control:focus{
+    box-shadow: none;
+    background: #7e484f;
+}
+.form-horizontal .control-label{
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: capitalize;
+    margin-bottom: 2px;
+    text-align: left;
+    
+}
+.form-horizontal .radio label{
+    padding-left: 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    text-align: left;
+}
+.form-horizontal .radio input[type="radio"]{
+    position: absolute;
+    opacity: 0;
+}
+.form-horizontal .radio input[type="radio"] + .radio-label:before{
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #9f636b;
+    border: 3px solid #9f636b;
+    position: relative;
+    top: 5px;
+    margin-right: 16px;
+    text-align: left;
+    -webkit-transition: all 250ms ease 0s;
+    transition: all 250ms ease 0s;
+}
+.form-horizontal .radio input[type="radio"]:checked + .radio-label:before{
+    background: #bab8b4;
+}
+.radio input[type="radio"]:focus + .radio-label:before{
+    outline: none;
+    border-color: #3b332a;
+}
+#radio-1 + .radio-label{
+    margin-left: -25px;
+}
+.form-horizontal .btn{
+    display: block;
+    float: right;
+    font-size: 14px;
+    color: #fff;
+    margin: 0;
+    border: none;
+    background: #1297d5;
+    border-radius: 4px;
+    padding: 10px 25px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.5s ease 0s;
+}
+.form-horizontal .btn:hover{
+    border-color: #fff;
+    color: #333;
+}
+@media only screen and (max-width: 767px){
+    .form-horizontal .form-group{
+        padding: 0;
+    }
+    .form-horizontal .form-control{
+        margin-bottom: 10px;
+    }
+    #radio-1 + .radio-label{
+        margin-left: 13px;
+    }
+}
+
+
 
 
 
