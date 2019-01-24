@@ -398,7 +398,7 @@ class Persona
      *
      * @return Persona
      */
-    public function setFechaFin($fechaFin)
+    public function setFechaFin($fechaFin=null)
     {
         $this->fechaFin = $fechaFin;
 

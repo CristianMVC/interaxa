@@ -42,6 +42,11 @@ class PersonaController extends Controller
       
         
       if ($form->isSubmitted() && $form->isValid()) {
+            
+            $hoy = new \DateTime();
+            $años = $hoy->diff($persona->getFechaNacimiento());
+            $persona->setEdad($años->y);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($persona);
             $em->flush();

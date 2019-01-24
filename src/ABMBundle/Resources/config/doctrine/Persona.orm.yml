@@ -84,7 +84,7 @@ ABMBundle\Entity\Persona:
             column: Fecha_ingreso
         fechaFin:
             type: date
-            nullable: false
+            nullable: true
             column: Fecha_fin     
     manyToOne:
         prepaga:

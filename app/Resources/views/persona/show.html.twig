@@ -59,8 +59,15 @@
                 <td>{% if persona.fechaIngreso %}{{ persona.fechaIngreso|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
-                <th  scope="row">Fechafin:</th>
-                <td>{% if persona.fechaFin %}{{ persona.fechaFin|date('Y-m-d') }}{% endif %}</td>
+              
+                {% if persona.fechaFin %}
+                    
+                    {% if persona.fechaFin != null %}
+                     <th  scope="row">Fechafin:</th>  
+                    <td>{{ persona.fechaFin|date('Y-m-d') }}</td>
+                    {% endif %}
+
+                    {% endif %}
             </tr>
         </tbody>
         

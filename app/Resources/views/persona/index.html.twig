@@ -41,10 +41,16 @@
                 <td>
                     <ul class="list-inline">
                         <li class="list-inline-item">
-                            <a href="{{ path('persona_show', { 'id': persona.id }) }}">show</a>
+                            <a href="{{ path('persona_show', { 'id': persona.id }) }}"><img src="{{ asset('public/iconos/detalle.png') }}"  height="42" width="42"></a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="{{ path('persona_edit', { 'id': persona.id }) }}">edit</a>
+                            <a href="{{ path('persona_edit', { 'id': persona.id }) }}"><img src="{{ asset('public/iconos/editar.png') }}"  height="42" width="42"> </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="{{ path('persona_edit', { 'id': persona.id }) }}"><img src="{{ asset('public/iconos/baja.png') }}"  height="42" width="42"></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="{{ path('persona_edit', { 'id': persona.id }) }}"><img src="{{ asset('public/iconos/licencias.png') }}"  height="42" width="42"></a>
                         </li>
                     </ul>
                 </td>
@@ -55,7 +61,7 @@
 </div><br />
     <ul>
         <li>
-            <a href="{{ path('persona_new') }}">Crear una nueva persona</a>
+            <a href="{{ path('persona_new') }}"> <img src="{{ asset('public/iconos/usuarios.png') }}"  height="42" width="42"> </a>
         </li>
     </ul>
     

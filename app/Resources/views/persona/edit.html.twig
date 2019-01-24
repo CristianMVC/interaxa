@@ -1,15 +1,145 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+<script>
+$(document).ready(function(){
+
+    $('#abmbundle_persona_fechaFin').append('<div>&nbsp; &nbsp;<b Style="color:red;">(Dejar en blanco si no posee fecha fin)</b> </div>');
+
+
+    if($('#abmbundle_persona_fechaFin_day').val() == ''){
+
+       $('#abmbundle_persona_fechaFin_day').fadeTo( "slow", 0.33 );
+
+       }
+
+    if($('#abmbundle_persona_fechaFin_month').val() == ''){
+
+       $('#abmbundle_persona_fechaFin_month').fadeTo( "slow", 0.33 );
+
+       }
+
+    if($('#abmbundle_persona_fechaFin_year').val() == ''){
+
+       $('#abmbundle_persona_fechaFin_year').fadeTo( "slow", 0.33 );
+
+       }
+
+       $('#abmbundle_persona_fechaFin_day').change(function(){
+         
+         if($($(this)).val() == ''){
+
+          $($(this)).fadeTo( "slow", 0.33 );
+          
+           $($(this)).fadeTo( "slow", 0.33 );
+           $('#abmbundle_persona_fechaFin_month').val('');
+           $('#abmbundle_persona_fechaFin_month').fadeTo( "slow", 0.33  );
+
+           $('#abmbundle_persona_fechaFin_year').val('');
+           $('#abmbundle_persona_fechaFin_year').fadeTo( "slow", 0.33  );
+
+          }else
+          {
+           $($(this)).fadeTo( "slow", 1 );
+           $('#abmbundle_persona_fechaFin_month').val(1);
+           $('#abmbundle_persona_fechaFin_month').fadeTo( "slow", 1 );
+
+           $('#abmbundle_persona_fechaFin_year').val(2000);
+           $('#abmbundle_persona_fechaFin_year').fadeTo( "slow", 1 );
+          }
+      
+        });
+
+
+  $('#abmbundle_persona_fechaFin_month').change(function(){
+         
+         if($(this).val() == ''){
+
+          $($(this)).fadeTo( "slow", 0.33 );
+          $('#abmbundle_persona_fechaFin_day').val('');
+          $('#abmbundle_persona_fechaFin_day').fadeTo( "slow", 0.33  );          
+ 
+          $('#abmbundle_persona_fechaFin_year').val('');
+          $('#abmbundle_persona_fechaFin_year').fadeTo( "slow", 0.33  );
+
+          }else
+          {
+           $($(this)).fadeTo( "slow", 1 );
+          $('#abmbundle_persona_fechaFin_day').val(1);
+          $('#abmbundle_persona_fechaFin_day').fadeTo( "slow", 1  );          
+ 
+          $('#abmbundle_persona_fechaFin_year').val(2000);
+          $('#abmbundle_persona_fechaFin_year').fadeTo( "slow", 1  );
+          }
+         
+         });
+
+
+  $('#abmbundle_persona_fechaFin_year').change(function(){
+         
+         if($(this).val() == ''){
+
+          $($(this)).fadeTo( "slow", 0.33 );
+          $('#abmbundle_persona_fechaFin_day').val('');
+          $('#abmbundle_persona_fechaFin_day').fadeTo( "slow", 0.33  );          
+ 
+          $('#abmbundle_persona_fechaFin_month').val('');
+          $('#abmbundle_persona_fechaFin_month').fadeTo( "slow", 0.33  );
+
+          }else
+          {
+           $($(this)).fadeTo( "slow", 1 );
+           $('#abmbundle_persona_fechaFin_day').val(1);
+           $('#abmbundle_persona_fechaFin_day').fadeTo( "slow", 1  );          
+ 
+           $('#abmbundle_persona_fechaFin_month').val(1);
+           $('#abmbundle_persona_fechaFin_month').fadeTo( "slow", 1  );
+          }
+         
+         });         
+
+
+});
+
+
+
+
+</script>
+
    
 <div class="container-fluid" style="width: 70%;"  >
 <h1><b>Editar Persona</b></h1><br />
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input class="btn btn-outline-primary" type="submit" value="Guardar" />
-    {{ form_end(edit_form) }}
- 
 
+    {{ form_start(edit_form,{ 'attr': {'class': 'form-inline'} }) }}
+
+       {{ form_label(edit_form.nroLegajo)}}
+       {{ form_widget(edit_form.nroLegajo,{ 'attr': {'class': 'form-control'} }) }}
+
+       {{ form_label(edit_form.nombre)}}
+       {{ form_widget(edit_form.nombre,{ 'attr': {'class': 'form-control'} }) }}
+
+       {{ form_label(edit_form.fechaNacimiento)}}
+       {{ form_widget(edit_form.fechaNacimiento,{ 'attr': {'class': 'form-control'} }) }}
+
+       {{ form_label(edit_form.tipoDoc)}}
+       {{ form_widget(edit_form.tipoDoc,{ 'attr': {'class': 'form-control'} }) }}
+
+       {{ form_label(edit_form.nroDoc)}}
+       {{ form_widget(edit_form.nroDoc,{ 'attr': {'class': 'form-control'} }) }}
+
+       {{ form_label(edit_form.cuil)}}
+       {{ form_widget(edit_form.cuil,{ 'attr': {'class': 'form-control'} }) }}
+
+       {{ form_label(edit_form.puesto)}}
+       {{ form_widget(edit_form.puesto,{ 'attr': {'class': 'form-control'} }) }}
+
+       {{ form_label(edit_form.numCelular)}}
+       {{ form_widget(edit_form.numCelular,{ 'attr': {'class': 'form-control'} }) }}
+       
+    {{ form_end(edit_form) }}
+ <br>
+ <input class="btn btn-outline-primary" type="submit" value="Guardar" />
 
 
     <ul>
