@@ -5,9 +5,7 @@
 <script>
 $(document).ready(function(){
 
-    $('#abmbundle_persona_fechaFin').append('<div>&nbsp; &nbsp;<b Style="color:red;">(Dejar en blanco si no posee fecha fin)</b> </div>');
-
-
+ 
     if($('#abmbundle_persona_fechaFin_day').val() == ''){
 
        $('#abmbundle_persona_fechaFin_day').fadeTo( "slow", 0.33 );
@@ -108,134 +106,126 @@ $(document).ready(function(){
 </script>
 
    
-<div class="container-fluid"   >
+<div class="container-fluid"  > 
+<br>
 <h1><b>Editar Persona</b></h1><br />
 
-
-    {{ form_start(edit_form) }}
-
-
-<div class="form-bg">
+{{ form_start(edit_form)}} 
    
-        <div class="row" style="width:1200px;">
+<div class="mahi_holder">
+    <div class="container">
+      <div class="row bg_1">
+     
+        <div class="col-3">
+           <label> Numero de legajo </label>
+          {{ form_widget(edit_form.nroLegajo,{ 'attr': {'class': 'effect-1'} }) }}
+          {{ form_errors(edit_form.nroLegajo) }}
+
+            
+              <span class="focus-border"></span>
+          </div>
+        <div class="col-3">
+
+       <label > Nombre </label>
+       {{ form_widget(edit_form.nombre,{ 'attr': {'class': 'effect-1'} }) }}
+       {{ form_errors(edit_form.nombre) }}
            
-                <form class="form-horizontal">
-                    
-                        
+              <span class="focus-border"></span>
+          </div>
+        <div class="col-3">
 
-<div class="form-group"  >
-<div class="col-md-12 col-sm-12">
-       <label class=" control-label" > Numero de legajo </label>
-       {{ form_widget(edit_form.nroLegajo,{ 'attr': {'class': 'form-control'} }) }}
+<label > Fecha de nacimiento </label>
+       {{ form_widget(edit_form.fechaNacimiento,{ 'attr': {'class': 'effect-1'} }) }}
+       {{ form_errors(edit_form.fechaNacimiento) }}
+          
+              <span class="focus-border"></span>
+          </div>        
+        <div class="col-3">
+           <label > Tipo documento </label>
+       {{ form_widget(edit_form.tipoDoc,{ 'attr': {'class': 'effect-1'} }) }}
+       {{ form_errors(edit_form.tipoDoc) }}
+              <span class="focus-border"></span>
+          </div>
+        <div class="col-3">
+            <label> Numero de documento </label>
+       {{ form_widget(edit_form.nroDoc,{ 'attr': {'class': 'effect-1'} }) }}
+       {{ form_errors(edit_form.nroDoc) }}
+              <span class="focus-border"></span>
+          </div>
+        <div class="col-3">
+             <label > Fecha de ingreso </label>
+       {{ form_widget(edit_form.fechaIngreso,{ 'attr': {'class': 'effect-1'} }) }}
+       {{ form_errors(edit_form.fechaIngreso) }}
+              <span class="focus-border"></span>
+          </div>        
+        <div class="col-3">
+            <label> Email </label>
+       {{ form_widget(edit_form.mail,{ 'attr': {'class': 'effect-1'} }) }}
+       {{form_errors(edit_form.mail)}}
+              <span class="focus-border">
+                <i></i>
+              </span>
+          </div>
+        <div class="col-3">
+            <label > Numero de celular </label>
+       {{ form_widget(edit_form.numCelular,{ 'attr': {'class': 'effect-1'} }) }}
+       {{ form_errors(edit_form.numCelular) }}
+
+              <span class="focus-border">
+                <i></i>
+              </span>
+          </div>
+    <div class="col-3">
+            <label > Prepaga </label>
+       {{ form_widget(edit_form.prepaga,{ 'attr': {'class': 'effect-1'} }) }}
+       {{ form_errors(edit_form.prepaga) }}<br>
+              <span class="focus-border">
+                <i></i>
+              </span>
+          </div>
+<div class="col-3">
+            <label > Cuil </label>
+       {{ form_widget(edit_form.cuil,{ 'attr': {'class': 'effect-1'} }) }}
+       {{ form_errors(edit_form.cuil) }}<br>
+              <span class="focus-border">
+                <i></i>
+              </span>
+          </div>
+<div class="col-3">
+            <label > Puesto </label>
+       {{ form_widget(edit_form.puesto,{ 'attr': {'class': 'effect-1'} }) }}
+       {{ form_errors(edit_form.puesto) }}<br>
+              <span class="focus-border">
+                <i></i>
+              </span>
+          </div>
+
+    <div class="col-3">
+            <label > Fecha fin </label>
+       {{ form_widget(edit_form.fechaFin,{ 'attr': {'class': 'effect-1'} }) }}
+       {{ form_errors(edit_form.fechaFin) }}<br>
+       <label style="color:red;"> Dejar en blanco si no posee fecha fin </label>
+              <span class="focus-border">
+                <i></i>
+              </span>
+          </div>
+      </div> 
+
+
+</div>
+</div>
 </div>
 
-<div class="col-md-12 col-sm-12">
-       <label class=" control-label" > Nombre </label>
-       {{ form_widget(edit_form.nombre,{ 'attr': {'class': 'form-control'} }) }}
-</div>
-
-<div class="col-md-12 col-sm-12">
-       <label class=" control-label" > Fecha de nacimiento </label>
-       {{ form_widget(edit_form.fechaNacimiento,{ 'attr': {'class': 'form-control'} }) }}
-</div>
-
-<div class="col-md-12 col-sm-12">
-       <label class=" control-label" > Tipo documento </label>
-       {{ form_widget(edit_form.tipoDoc,{ 'attr': {'class': 'form-control'} }) }}
-</div>
-
-</div>
-<div class="form-group" >
-
-<div class="col-md-12 col-sm-12">
-       <label class=" control-label" > Numero de documento </label>
-       {{ form_widget(edit_form.nroDoc,{ 'attr': {'class': 'form-control'} }) }}
-</div>
-
-
-<div class="col-md-12 col-sm-12">
-       <label class=" control-label" > Cuil </label>
-       {{ form_widget(edit_form.cuil,{ 'attr': {'class': 'form-control'} }) }}
-</div>
-
-<div class="col-md-12 col-sm-12">
-       <label class=" control-label" > Puesto </label>
-       {{ form_widget(edit_form.puesto,{ 'attr': {'class': 'form-control'} }) }}
-</div>
-
-<div class="col-md-12 col-sm-12">
-       <label class=" control-label" > Numero de celular </label>
-       {{ form_widget(edit_form.numCelular,{ 'attr': {'class': 'form-control'} }) }}
-</div>
-
-</div>
-
-<div class="form-group" style="width:50%;">
-
-
-
-<div class="col-md-6 col-sm-12">
-       <label class=" control-label" > Email </label>
-       {{ form_widget(edit_form.mail,{ 'attr': {'class': 'form-control'} }) }}
-</div>
-
-<div class="col-md-6 col-sm-12">
-       <label class=" control-label" > Fecha de ingreso </label>
-       {{ form_widget(edit_form.fechaIngreso,{ 'attr': {'class': 'form-control'} }) }}
-</div>
-
-<div class="col-md-6 col-sm-12">
-       {{ form_label(edit_form.fechaFin)}}
-       {{ form_widget(edit_form.fechaFin,{ 'attr': {'class': 'form-control'} }) }}
-</div>
-
-<div class="col-md-6 col-sm-12">
-       <label class=" control-label" > Prepaga </label>
-       {{ form_widget(edit_form.prepaga,{ 'attr': {'class': 'form-control'} }) }}
-</div>
+{{ form_end(edit_form) }}
 
 
 
 
-        
-      </div>
-     </form>
-    </div>
-   </div>
-  
+
+
  </div>
 
-       
-    {{ form_end(edit_form) }}
+      
 
 
-
- <br>
- <input class="btn btn-outline-primary" type="submit" value="Guardar" />
-
-
-    <ul>
-        <br />
-         <li style="list-style:none;">
-     <form method="get" action="{{ path('vacaciones_new', { 'id' : persona.id }) }}">
-     <input class="btn btn-outline-success" type="submit" value="Agregar periodo vacaciones" />
-     </form>
-     </br>
-     
-      <form method="get" action="{{ path('vacaciones_show', { 'id' : persona.id }) }}">
-     <input class="btn btn-outline-success" type="submit" value="Ver periodos" />
-     </form>
-    </br>
-    </li>
-        <li style="list-style:none;">
-            {{ form_start(delete_form) }}
-                <input class="btn btn-outline-danger" type="submit" value="Borrar persona"/>
-            {{ form_end(delete_form) }}
-        </li>
-      <br />  
-<li>
-            <a href="{{ path('persona_index') }}">Volver a la lista</a>
-        </li><br />
-    </ul>
-    </div>
 {% endblock %}
