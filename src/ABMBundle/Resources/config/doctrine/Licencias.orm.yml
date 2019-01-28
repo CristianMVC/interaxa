@@ -1,0 +1,40 @@
+ABMBundle\Entity\Licencias:
+    type: entity
+    table: null
+    repositoryClass: ABMBundle\Repository\LicenciasRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        tipo:
+            type: string
+            length: 255
+            unique: true
+        cantidadDias:
+            type: integer
+            column: cantidad_dias
+        fechaInicio:
+            type: datetime
+            nullable: true
+            column: fecha_inicio
+        fechaFin:
+            type: datetime
+            nullable: true
+            column: fecha_fin
+        totalDias:
+            type: integer
+            nullable: true
+            column: total_dias
+    manyToOne:
+        personas:
+            targetEntity: Persona
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                persona_id:
+                    referencedColumnName: id
+    lifecycleCallbacks: {  }

@@ -121,9 +121,15 @@ class Persona
      */
    private $vacaciones;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Licencias", mappedBy="personas")
+     */
+   private $licencias;
+
      public function __construct()
     {
         $this->vacaciones = new ArrayCollection();
+        $this->licencias = new ArrayCollection();
     }
     
       public function addUser(Vacaciones $vacaciones)
@@ -139,7 +145,15 @@ class Persona
     public function getVacaciones() {
         return $this->vacaciones;
     }
-    
+
+
+    /**
+     * @return Collection
+     */
+    public function getLicencias() {
+        return $this->licencias;
+    }
+
 
     /**
      * Get id

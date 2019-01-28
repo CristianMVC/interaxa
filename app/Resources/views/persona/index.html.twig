@@ -1,16 +1,51 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 
+<script>
+$(document).ready(function(){
+	
+	$("#kwd_search").keyup(function(){
+		
+		if( $(this).val() != "")
+		{
+
+			$("#my-table tbody>tr").hide();
+			$("#my-table td:contains-ci('" + $(this).val() + "')").parent("tr").show();
+		}
+		else
+		{
+			
+			$("#my-table tbody>tr").show();
+		}
+	});
+});
+
+$.extend($.expr[":"], 
+{
+    "contains-ci": function(elem, i, match, array) 
+	{
+		return (elem.textContent || elem.innerText || $(elem).text() || "").toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+	}
+});
+ 
+</script>
 
 <br />
 <div>
-<img  src="{{ asset('public/interaxa.png') }}"  style="position: relative; left: 35%;"/>
+<img  src="{{ asset('public/interaxa.png') }}"  style="position: relative; left: 35%; border-top-left-radius: 30px;
+border-bottom-right-radius: 30px; border:5px inset blue;-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);"/>
 </div>
 
 <br /><br />
 
+<div>
+<input type="text" id="kwd_search" placeholder="Buscar" value="" style="position:relative; float:right; right:1%; width:300px; border-top-left-radius: 10px; background-color:#A9D0F5"/>
+</div>
+<br><br>
 <div class="container-fluid">
-    <table class="table table-dark" >
+    <table  id="my-table" class="table table-dark" >
         <thead >
             <tr>
                 <th>Id</th>
@@ -41,16 +76,14 @@
                 <td>
                     <ul class="list-inline">
                         <li class="list-inline-item">
-                            <a href="{{ path('persona_show', { 'id': persona.id }) }}"><img src="{{ asset('public/iconos/detalle.png') }}"  height="42" width="42"></a>
+                            <a href="{{ path('persona_edit', { 'id': persona.id }) }}"><img src="{{ asset('public/iconos/detalle.png') }}"  height="32" width="32"></a>
+                        </li>
+
+                        <li class="list-inline-item">
+                            <a href="{{ path('persona_edit', { 'id': persona.id }) }}"><img src="{{ asset('public/iconos/baja.png') }}"  height="32" width="32"></a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="{{ path('persona_edit', { 'id': persona.id }) }}"><img src="{{ asset('public/iconos/editar.png') }}"  height="42" width="42"> </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="{{ path('persona_edit', { 'id': persona.id }) }}"><img src="{{ asset('public/iconos/baja.png') }}"  height="42" width="42"></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="{{ path('persona_edit', { 'id': persona.id }) }}"><img src="{{ asset('public/iconos/licencias.png') }}"  height="42" width="42"></a>
+                            <a href="{{ path('licencias_new', { 'id': persona.id }) }}"><img src="{{ asset('public/iconos/licencias.png') }}"  height="32" width="32"></a>
                         </li>
                     </ul>
                 </td>

@@ -5,3 +5,7 @@ abm_persona:
 abm_persona_vacaciones:
     resource: "@ABMBundle/Resources/config/routing/vacaciones.yml"
     prefix:   /persona
+
+abm_persona_licencias:
+    resource: "@ABMBundle/Resources/config/routing/licencias.yml"
+    prefix:   /persona

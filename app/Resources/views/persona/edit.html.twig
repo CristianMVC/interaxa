@@ -108,7 +108,10 @@ $(document).ready(function(){
    
 <div class="container-fluid"  > 
 <br>
+<div>
 <h1><b>Editar Persona</b></h1><br />
+</div>
+<hr>
 
 {{ form_start(edit_form)}} 
    
@@ -215,7 +218,12 @@ $(document).ready(function(){
 </div>
 </div>
 </div>
-
+<div class="col-3">
+<a class="volver" href="{{ path('persona_index') }}">Volver</a>
+</div>
+<div class="col-3">
+<input id="guardar" class="btn btn-outline-success" type="submit" value="Guardar"  />
+</div>
 {{ form_end(edit_form) }}
 
 

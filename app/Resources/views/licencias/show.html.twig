@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Licencia</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ licencia.id }}</td>
+            </tr>
+            <tr>
+                <th>Tipo</th>
+                <td>{{ licencia.tipo }}</td>
+            </tr>
+            <tr>
+                <th>Cantidaddias</th>
+                <td>{{ licencia.cantidadDias }}</td>
+            </tr>
+            <tr>
+                <th>Fechainicio</th>
+                <td>{% if licencia.fechaInicio %}{{ licencia.fechaInicio|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fechafin</th>
+                <td>{% if licencia.fechaFin %}{{ licencia.fechaFin|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Totaldias</th>
+                <td>{{ licencia.totalDias }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('licencias_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('licencias_edit', { 'id': licencia.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

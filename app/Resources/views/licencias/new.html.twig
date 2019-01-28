@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<script>
+
+function licencia(){
+
+
+
+}
+
+
+
+
+</script>
+
+
+
+
+
+<div class="container-fluid"  > 
+    <h1><b>Licencias y vacaiones</b></h1>
+<hr>
+ 
+<div class="container-fluid" style="display:inline;">
+<label>Agregar licencia:</label><br>
+
+<div style="float:left; padding:10px;">
+<select class="form-control" id="exampleFormControlSelect1">
+<option>Vaciones</option>
+<option>Otra licencia</option>
+</select>
+</div>
+
+<button  type="button" class="btn btn-outline-primary" style="position:relative;float:left;padding:10px;" onclick="licencia()">Agregar</button>
+
+</div>
+
+
+<div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br><br>
+    <ul>
+        <li>
+            <a href="{{ path('licencias_index') }}">volver</a>
+        </li>
+    </ul>
+
+</div>
+{% endblock %}

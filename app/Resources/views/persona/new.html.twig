@@ -2,13 +2,10 @@
 
 {% block body %}
 
-
 <script>
 $(document).ready(function(){
 
-    $('#abmbundle_persona_fechaFin').append('<div>&nbsp; &nbsp;<b Style="color:red;">(Dejar en blanco si no posee fecha fin)</b> </div>');
-
-
+ 
     if($('#abmbundle_persona_fechaFin_day').val() == ''){
 
        $('#abmbundle_persona_fechaFin_day').fadeTo( "slow", 0.33 );
@@ -108,21 +105,135 @@ $(document).ready(function(){
 
 </script>
 
-
-<div class="container-fluid" style="position: relative; width:70%;" >
- <h1><b>Crear Persona </b></h1><br />
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-         {{ form_widget(form.prepaga) }}
-     {{ form_errors(form) }}
-        <input class="btn btn-outline-primary" type="submit" value="Crear" />
-    {{ form_end(form) }}
-  <br />
-    <ul class="list-group">
-        <li>
-            <a href="{{ path('persona_index') }}">Volver a la lista</a>
-        </li>
-    </ul>
    
-   </div> 
+<div class="container-fluid"  > 
+<br>
+<div>
+<h1><b>Agregar Persona</b></h1><br />
+</div>
+<hr>
+
+{{ form_start(form)}} 
+   
+<div class="mahi_holder">
+    <div class="container">
+      <div class="row bg_1">
+     
+        <div class="col-3">
+           <label> Numero de legajo </label>
+          {{ form_widget(form.nroLegajo,{ 'attr': {'class': 'effect-1'} }) }}
+          {{ form_errors(form.nroLegajo) }}
+
+            
+              <span class="focus-border"></span>
+          </div>
+        <div class="col-3">
+
+       <label > Nombre </label>
+       {{ form_widget(form.nombre,{ 'attr': {'class': 'effect-1'} }) }}
+       {{ form_errors(form.nombre) }}
+           
+              <span class="focus-border"></span>
+          </div>
+        <div class="col-3">
+
+<label > Fecha de nacimiento </label>
+       {{ form_widget(form.fechaNacimiento,{ 'attr': {'class': 'effect-1'} }) }}
+       {{ form_errors(form.fechaNacimiento) }}
+          
+              <span class="focus-border"></span>
+          </div>        
+        <div class="col-3">
+           <label > Tipo documento </label>
+       {{ form_widget(form.tipoDoc,{ 'attr': {'class': 'effect-1'} }) }}
+       {{ form_errors(form.tipoDoc) }}
+              <span class="focus-border"></span>
+          </div>
+        <div class="col-3">
+            <label> Numero de documento </label>
+       {{ form_widget(form.nroDoc,{ 'attr': {'class': 'effect-1'} }) }}
+       {{ form_errors(form.nroDoc) }}
+              <span class="focus-border"></span>
+          </div>
+        <div class="col-3">
+             <label > Fecha de ingreso </label>
+       {{ form_widget(form.fechaIngreso,{ 'attr': {'class': 'effect-1'} }) }}
+       {{ form_errors(form.fechaIngreso) }}
+              <span class="focus-border"></span>
+          </div>        
+        <div class="col-3">
+            <label> Email </label>
+       {{ form_widget(form.mail,{ 'attr': {'class': 'effect-1'} }) }}
+       {{form_errors(form.mail)}}
+              <span class="focus-border">
+                <i></i>
+              </span>
+          </div>
+        <div class="col-3">
+            <label > Numero de celular </label>
+       {{ form_widget(form.numCelular,{ 'attr': {'class': 'effect-1'} }) }}
+       {{ form_errors(form.numCelular) }}
+
+              <span class="focus-border">
+                <i></i>
+              </span>
+          </div>
+    <div class="col-3">
+            <label > Prepaga </label>
+       {{ form_widget(form.prepaga,{ 'attr': {'class': 'effect-1'} }) }}
+       {{ form_errors(form.prepaga) }}<br>
+              <span class="focus-border">
+                <i></i>
+              </span>
+          </div>
+<div class="col-3">
+            <label > Cuil </label>
+       {{ form_widget(form.cuil,{ 'attr': {'class': 'effect-1'} }) }}
+       {{ form_errors(form.cuil) }}<br>
+              <span class="focus-border">
+                <i></i>
+              </span>
+          </div>
+<div class="col-3">
+            <label > Puesto </label>
+       {{ form_widget(form.puesto,{ 'attr': {'class': 'effect-1'} }) }}
+       {{ form_errors(form.puesto) }}<br>
+              <span class="focus-border">
+                <i></i>
+              </span>
+          </div>
+
+    <div class="col-3">
+            <label > Fecha fin </label>
+       {{ form_widget(form.fechaFin,{ 'attr': {'class': 'effect-1'} }) }}
+       {{ form_errors(form.fechaFin) }}<br>
+       <label style="color:red;"> Dejar en blanco si no posee fecha fin </label>
+              <span class="focus-border">
+                <i></i>
+              </span>
+          </div>
+      </div> 
+
+
+</div>
+</div>
+</div>
+<div class="col-3">
+<a class="volver" href="{{ path('persona_index') }}">Volver</a>
+</div>
+<div class="col-3">
+<input id="guardar" class="btn btn-outline-success" type="submit" value="Agregar"  />
+</div>
+{{ form_end(form) }}
+
+
+
+
+
+
+ </div>
+
+      
+
+
 {% endblock %}

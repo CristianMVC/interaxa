@@ -109,5 +109,8 @@ ABMBundle\Entity\Persona:
         vacaciones:
             targetEntity: Vacaciones
             mappedBy: personas
+        licencias:
+            targetEntity: Licencias
+            mappedBy: personas
                           
     lifecycleCallbacks: {  }

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Licencias list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Tipo</th>
+                <th>Cantidaddias</th>
+                <th>Fechainicio</th>
+                <th>Fechafin</th>
+                <th>Totaldias</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for licencia in licencias %}
+            <tr>
+                <td><a href="{{ path('licencias_show', { 'id': licencia.id }) }}">{{ licencia.id }}</a></td>
+                <td>{{ licencia.tipo }}</td>
+                <td>{{ licencia.cantidadDias }}</td>
+                <td>{% if licencia.fechaInicio %}{{ licencia.fechaInicio|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if licencia.fechaFin %}{{ licencia.fechaFin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ licencia.totalDias }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('licencias_show', { 'id': licencia.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('licencias_edit', { 'id': licencia.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('licencias_new') }}">Create a new licencia</a>
+        </li>
+    </ul>
+{% endblock %}

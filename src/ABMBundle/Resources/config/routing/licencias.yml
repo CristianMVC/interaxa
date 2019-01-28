@@ -1,0 +1,24 @@
+licencias_index:
+    path:     /
+    defaults: { _controller: "ABMBundle:Licencias:index" }
+    methods:  GET
+
+licencias_show:
+    path:     /{id}/show
+    defaults: { _controller: "ABMBundle:Licencias:show" }
+    methods:  GET
+
+licencias_new:
+    path:     /{id}/licencias/new
+    defaults: { _controller: "ABMBundle:Licencias:new" }
+    methods:  [GET, POST]
+
+licencias_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ABMBundle:Licencias:edit" }
+    methods:  [GET, POST]
+
+licencias_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ABMBundle:Licencias:delete" }
+    methods:  DELETE
