@@ -35,6 +35,15 @@ class LicenciasController extends Controller
     {
         $licencia = new Licencias();
 
+        $em = $this->getDoctrine()->getManager();
+        $licencias = $em->getRepository('ABMBundle:Licencias')->findAll();  
+        var_dump($licencias);
+        die();
+        if(empty($licencias)){
+          $licencias = null;
+    
+        }
+
         $em = $this->getDoctrine()->getEntityManager();
         $persona = $em->getRepository('ABMBundle:Persona')->find($request->get('id'));
 
@@ -45,13 +54,14 @@ class LicenciasController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($licencia);
             $em->flush();
-
+            
             return $this->redirectToRoute('licencias_show', array('id' => $licencia->getId()));
         }
 
         return $this->render('licencias/new.html.twig', array(
             'licencia' => $licencia,
             'form' => $form->createView(),
+            'licencias' => $licencias,
         ));
     }
 

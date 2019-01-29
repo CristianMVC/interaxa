@@ -25,7 +25,7 @@ class LicenciasType extends AbstractType
                                   ->where('u.id ='.$id);
                         },
                         ));
-        $builder->add('tipo')->add('cantidadDias')->add('fechaInicio')->add('fechaFin')->add('totalDias');
+        $builder->add('tipo')->add('cantidadDias');
     }/**
      * {@inheritdoc}
      */

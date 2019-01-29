@@ -5,7 +5,11 @@
 
 function licencia(){
 
+if($('#select').val() == 2){
 
+ $('#form').toggle();
+
+}
 
 }
 
@@ -16,51 +20,79 @@ function licencia(){
 
 
 
-
-
 <div class="container-fluid"  > 
-    <h1><b>Licencias y vacaiones</b></h1>
+    <h1><b>Licencias y vacaciones</b></h1>
 <hr>
  
 <div class="container-fluid" style="display:inline;">
 <label>Agregar licencia:</label><br>
 
-<div style="float:left; padding:10px;">
-<select class="form-control" id="exampleFormControlSelect1">
-<option>Vaciones</option>
-<option>Otra licencia</option>
+
+<div style="float:left; padding:10px; display:inline;">
+<select id="select" class="form-control" id="exampleFormControlSelect1" style="float:left; padding:10px; display:inline; ">
+<option value=1>Vaciones</option>
+<option value=2>Otra licencia</option>
 </select>
 </div>
 
-<button  type="button" class="btn btn-outline-primary" style="position:relative;float:left;padding:10px;" onclick="licencia()">Agregar</button>
+<div style="float:left; padding:10px; display:inline;">
+<button  type="button" class="btn btn-outline-primary" style="position:relative;float:left;padding:7px;" onclick="licencia()">Agregar</button>
+</div>
 
 </div>
 
+<div id="otro">
+<br><br>
+<div id="form" style="display:none;">
+{{ form_start(form)}} 
+<b>{{form_label(form.personas)}}</b>
+{{form_widget(form.personas)}}
+<br>
+<b>{{form_label(form.tipo)}}</b>(Nombre de la licencia)
+{{form_widget(form.tipo)}}
+<br>
+<b>{{form_label(form.cantidadDias)}}</b>
+{{form_widget(form.cantidadDias)}}
+<br>
 
-<div>
 
+<input id="listo" class="btn btn-outline-success" type="submit" value="Listo"  />
 
-
-
-
+{{ form_end(form) }}
 </div>
 
+</div>
+<br>
+
+<table class="table">
+{% if licencias is not null and licencias is defined %}
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">tipo de licencia</th>
+      <th scope="col">dias</th>
+      <th scope="col">desde</th>
+      <th scope="col">hasta</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for l in licencias %}
+    <tr>
+      <th scope="row">{{ l.id }}</th>
+      <td>{{ l.tipo }}</td>
+      <td>{{ l.dias}}</td>
+      <td>@mdo</td>
+    </tr>
+{% endfor %}
+  </tbody>
+{% endif %}
+</table>
 
 
-
-
-
-
-
-
-
-
-<br><br><br><br><br>
-    <ul>
-        <li>
-            <a href="{{ path('licencias_index') }}">volver</a>
-        </li>
-    </ul>
+<br>
+   
+ <a href="{{ path('licencias_index') }}">Volver</a>
+   
 
 </div>
 {% endblock %}

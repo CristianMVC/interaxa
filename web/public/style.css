@@ -346,4 +346,15 @@ width:500px;
   padding:5px 5px 5px 0;
 }
 
+#form{
+position:relative;
+width:25em;
+height:25em;
+border: 1px solid #D8D8D8;
+padding:30px;
+border-radius:5px;
+left:1%;	
+
+}
+
 
