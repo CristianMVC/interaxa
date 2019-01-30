@@ -119,12 +119,12 @@ class Persona
      /**
      * @ORM\OneToMany(targetEntity="Vacaciones", mappedBy="personas")
      */
-   private $vacaciones;
+    private $vacaciones;
 
     /**
      * @ORM\OneToMany(targetEntity="Licencias", mappedBy="personas")
      */
-   private $licencias;
+    private $licencias;
 
      public function __construct()
     {

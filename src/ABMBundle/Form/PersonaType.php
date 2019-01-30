@@ -16,7 +16,7 @@ class PersonaType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nroLegajo')->add('nombre')->add('fechaNacimiento','date',array('format' => 'dd-MM-yyyy', 'years' => range(date('Y'), date('Y') - 60, -1)))->add('tipoDoc',ChoiceType::class,array('choices'=>array('DNI','LE','LC')))->add('nroDoc')->add('cuil')->add('puesto')->add('numCelular')->add('mail')->add('fechaIngreso','date',array('format' => 'dd-MM-yyyy', 'years' => range(date('Y'), date('Y') - 60, -1)))->add('fechaFin','date',array('format' => 'dd-MM-yyyy', 'years' => range(date('Y'), date('Y') - 60, -1),'required' => false));
+        $builder->add('nroLegajo')->add('nombre')->add('fechaNacimiento','date',array('format' => 'dd-MM-yyyy', 'years' => range(date('Y'), date('Y') - 60, -1)))->add('tipoDoc',ChoiceType::class,array('choices'=>array('DNI'=>'DNI','LE'=>'LE','LC'=>'LC')))->add('nroDoc')->add('cuil')->add('puesto')->add('numCelular')->add('mail')->add('fechaIngreso','date',array('format' => 'dd-MM-yyyy', 'years' => range(date('Y'), date('Y') - 60, -1)))->add('fechaFin','date',array('format' => 'dd-MM-yyyy', 'years' => range(date('Y'), date('Y') - 60, -1),'required' => false));
         $builder->add('prepaga', 'entity', array(
                       'class' => 'ABMBundle:Prepaga',
                       'query_builder' => function(EntityRepository $er) {

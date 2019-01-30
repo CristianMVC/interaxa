@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
 <script>
 
 function licencia(){
@@ -13,8 +14,17 @@ if($('#select').val() == 2){
 
 }
 
+function tomar(id){
 
+ $('#'+id).toggle();
+  
 
+}
+
+function ver(id){
+
+$("#t"+id).toggle();
+}
 
 </script>
 
@@ -70,9 +80,11 @@ if($('#select').val() == 2){
     <tr>
       <th scope="col">id</th>
       <th scope="col">tipo de licencia</th>
-      <th scope="col">dias</th>
-      <th scope="col">desde</th>
-      <th scope="col">hasta</th>
+      <th scope="col">dias restantes</th>
+      <th scope="col">En curso</th>
+      <th scope="col"></th>
+<th scope="col"></th>
+      
     </tr>
   </thead>
   <tbody>
@@ -80,9 +92,39 @@ if($('#select').val() == 2){
     <tr>
       <th scope="row">{{ l.id }}</th>
       <td>{{ l.tipo }}</td>
-      <td>{{ l.dias}}</td>
-      <td>@mdo</td>
+      <td>{{ l.totalDias}}</td>
+      <td><a Style="color:red;">SI</a>
+      <td></td>
+      <td> 
+       <button type="button" class="btn btn-primary" onclick="tomar({{ l.id }})">Tomar</button>
+       <button type="button" class="btn btn-success" onclick="ver({{ l.id }})">Ver dias</button> 
+      <button type="button" class="btn btn-danger">Eliminar</button> 
+     </td>
     </tr>
+ 
+  <tr id={{ l.id }} style="display:none;">
+<td ></td >
+    <td style="padding-top:10px; padding-bottom:10px;">
+    <div>
+    <label><b>Fecha inicio</b></label>
+    <input type="date" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></div> 
+    </td>
+     
+    <td >
+    <div>
+    <label><b>Fecha fin</b></label>
+    <input type="date" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"> </div>
+    </td>
+
+    <td style="padding-top:10px; padding-bottom:10px;">
+    <button  type="button" class="btn btn-outline-primary" style="position:relative;float:left; bottom:-2em;" >Agregar</button>
+    </td>
+    </tr>
+
+    <tr id="t{{ l.id }}" style="display:none;" >
+   <td>2</td>
+
+   </tr>
 {% endfor %}
   </tbody>
 {% endif %}

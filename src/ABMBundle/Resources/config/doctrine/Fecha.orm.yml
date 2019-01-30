@@ -1,0 +1,25 @@
+ABMBundle\Entity\Fecha:
+    type: entity
+    table: null
+    repositoryClass: ABMBundle\Repository\FechaRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        desde:
+            type: date
+        hasta:
+            type: date
+    manyToOne:
+        licencias:
+            targetEntity: Licencias
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                licencias_id:
+                    referencedColumnName: id
+    lifecycleCallbacks: {  }

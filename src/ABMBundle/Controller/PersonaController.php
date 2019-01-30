@@ -51,7 +51,7 @@ class PersonaController extends Controller
             $em->persist($persona);
             $em->flush();
 
-            return $this->redirectToRoute('persona_show', array('id' => $persona->getId()));
+            return $this->redirectToRoute('persona_index');
         }
   
         return $this->render('persona/new.html.twig', array(
@@ -92,6 +92,10 @@ class PersonaController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $hoy = new \DateTime();
+            $años = $hoy->diff($persona->getFechaNacimiento());
+            $persona->setEdad($años->y);
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('persona_edit', array('id' => $persona->getId()));

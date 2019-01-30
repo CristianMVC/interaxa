@@ -26,15 +26,6 @@ class Licencias
      */
     private $cantidadDias;
 
-    /**
-     * @var \DateTime
-     */
-    private $fechaInicio;
-
-    /**
-     * @var \DateTime
-     */
-    private $fechaFin;
 
     /**
      * @var int
@@ -47,6 +38,26 @@ class Licencias
      */  
       
      private $personas; 
+
+    /**
+     * @ORM\OneToMany(targetEntity="Fecha", mappedBy="licencias")
+     */
+     private $fechas;
+
+
+
+     public function __construct()
+     {
+        $this->fechas = new ArrayCollection();
+     }
+
+     /**
+     * @return Collection
+     */
+     public function getFechas() {
+        return $this->fechas;
+     }
+     
 
 
     /**
@@ -107,54 +118,7 @@ class Licencias
         return $this->cantidadDias;
     }
 
-    /**
-     * Set fechaInicio
-     *
-     * @param \DateTime $fechaInicio
-     *
-     * @return Licencias
-     */
-    public function setFechaInicio($fechaInicio)
-    {
-        $this->fechaInicio = $fechaInicio;
-
-        return $this;
-    }
-
-    /**
-     * Get fechaInicio
-     *
-     * @return \DateTime
-     */
-    public function getFechaInicio()
-    {
-        return $this->fechaInicio;
-    }
-
-    /**
-     * Set fechaFin
-     *
-     * @param \DateTime $fechaFin
-     *
-     * @return Licencias
-     */
-    public function setFechaFin($fechaFin)
-    {
-        $this->fechaFin = $fechaFin;
-
-        return $this;
-    }
-
-    /**
-     * Get fechaFin
-     *
-     * @return \DateTime
-     */
-    public function getFechaFin()
-    {
-        return $this->fechaFin;
-    }
-
+    
     /**
      * Set totalDias
      *
@@ -181,7 +145,7 @@ class Licencias
 
 
 
-/**
+    /**
      * Set personas
      *
      * @param \ABMBundle\Entity\Persona $personas

@@ -41,7 +41,7 @@ box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);"/>
 <br /><br />
 
 <div>
-<input type="text" id="kwd_search" placeholder="Buscar" value="" style="position:relative; float:right; right:1%; width:300px; border-top-left-radius: 10px; background-color:#A9D0F5"/>
+<input type="text" id="kwd_search" placeholder="Buscar" value="" style="position:relative; float:right; right:1%; width:300px; border-radius: 10px; background-color:#A9D0F5"/>
 </div>
 <br><br>
 <div class="container-fluid">
@@ -66,7 +66,7 @@ box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);"/>
                 <td><a href="{{ path('persona_show', { 'id': persona.id }) }}">{{ persona.id }}</a></td>
                 <td>{{ persona.nroLegajo }}</td>
                 <td>{{ persona.nombre }}</td>
-                <td>{% if persona.fechaNacimiento %}{{ persona.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if persona.fechaNacimiento %}{{ persona.fechaNacimiento|date('d-m-Y') }}{% endif %}</td>
                 <td>{{ persona.edad }}</td>
                 <td>{{ persona.tipoDoc }}</td>
                 <td>{{ persona.nroDoc }}</td>

@@ -16,14 +16,6 @@ ABMBundle\Entity\Licencias:
         cantidadDias:
             type: integer
             column: cantidad_dias
-        fechaInicio:
-            type: datetime
-            nullable: true
-            column: fecha_inicio
-        fechaFin:
-            type: datetime
-            nullable: true
-            column: fecha_fin
         totalDias:
             type: integer
             nullable: true
@@ -37,4 +29,8 @@ ABMBundle\Entity\Licencias:
             joinColumns:
                 persona_id:
                     referencedColumnName: id
+    oneToMany:
+        fechas:
+            targetEntity: Fecha
+            mappedBy: licencias
     lifecycleCallbacks: {  }
